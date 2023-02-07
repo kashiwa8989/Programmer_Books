@@ -1,0 +1,33 @@
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <span style="margin: 120px">
+    <%= link_to user_path(current_user), class: "nav-link text-light" do %>
+      <button type="button" class="btn btn-light" style="width:110px;">マイページ</button>
+    <% end %>
+    </span>
+  </li>
+  <li class="nav-item">
+    <span style="margin: 120px">
+    <%= link_to class: "nav-link text-light" do %>
+      <button type="button" class="btn btn-light" style="width:110px;">商品一覧</button>
+    <% end %>
+    </span>
+  </li>
+  <li class="nav-item">
+    <span style="margin: 120px">
+    <%= link_to class: "nav-link text-light" do %>
+      <button type="button" class="btn btn-light" style="width:110px;">カート</button>
+    <% end %>
+    </span>
+  </li>
+  <li class="nav-item">
+    <span style="margin: 120px">
+    <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+      <button type="button" class="btn btn-light" style="width:110px;">ログアウト</button>
+    <% end %>
+    </span>
+  </li>
+</ul>
+<!--<div style="size: 80%; margin: 0 0 0 auto;" >-->
+<!--  <#%= render 'layouts/search' %>-->
+<!--</div>-->

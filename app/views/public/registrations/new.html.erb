@@ -1,5 +1,3 @@
-<%= render "public/shared/links" %>
-
 <div class="container mt-5 mb-5">
   <%= render "public/shared/error_messages", resource: resource %>
   <div class="row my-3">
@@ -12,12 +10,29 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
     <div class="row">
-      <div class="col-2 offset-md-1"><%= f.label "ニックネーム" %></div>
-      <div class="col-1"><%= f.text_field :name, :size => "10", placeholder: "プロフラマーs" %></div>
+      <div class="col-3 offset-md-1"><%= f.label "ニックネーム" %></div>
+      <div class="col-3"><%= f.text_field :name, :size => "10", placeholder: "プロフラマーs" %></div>
     </div>
     <div class="row">
       <div class="col-3 offset-md-1"><%= f.label "メールアドレス" %></div>
       <div class="col-3"><%= f.email_field :email, :size => "25", placeholder: "sample@example.com" %></div>
+    </div>
+    <div class="row">
+    <div class="col-3 offset-md-1"><%= f.label :birthday %></div>
+    <div class="col-3">
+    <%= f.date_select :birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 5), default: Date.new(1989, 1, 1) %>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-3 offset-md-1">
+      <%= f.label "性別" %><br />
+    <div class="col-3">
+      <%= f.label :man  %>
+      <%= f.radio_button :gender_id, :man %>
+      <%= f.label :woman  %>
+      <%= f.radio_button :gender_id, :woman %>
+    </div>
+    </div>
     </div>
     <div class="row">
       <div class="col-3 offset-md-1">

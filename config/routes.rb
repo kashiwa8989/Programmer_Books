@@ -23,12 +23,13 @@ end
 
 scope module: :public do
   resources :books, only: [:index, :create, :new, :show, :edit, :update, :destroy]
-  get "/users/:id/unsubscribe" => "customers#unsubscribe", as: "unsubscribe"
-  patch "/users/:id/withdraw" => "customers#withdraw", as: "withdraw"
+  get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
+  patch "/users/:id/withdraw" => "users#withdraw", as: "withdraw"
   resources :users, only: [:show, :update, :edit]
   resources :book_comments, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   root "homes#top"
+
 
 end
 

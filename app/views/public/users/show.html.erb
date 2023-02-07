@@ -1,2 +1,10 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h1>マイページ</h1>
+<div>
+  <%= link_to "編集する", edit_user_path(@user), class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+  <%#= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-outline-danger mx-auto my-1" %>
+</div>
+<div>
+<div><%= @user.name %></div>
+<div><%= @user.email %></div>
+<div><%= @user.birthday %></div>
+<div><%= @user.gender_id %></div>
