@@ -5,7 +5,9 @@ class Public::BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
     @user = User.all
+    # @user = User.find(params[:id])
   end
 
   def show

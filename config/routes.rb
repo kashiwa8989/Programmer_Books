@@ -30,8 +30,6 @@ scope module: :public do
   resources :book_comments, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   root "homes#top"
-
-
 end
 
 end
