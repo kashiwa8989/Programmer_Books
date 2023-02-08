@@ -1,10 +1,17 @@
+<div class = "container">
 <h1>マイページ</h1>
 <div>
   <%= link_to "編集する", edit_user_path(@user), class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
   <%#= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-outline-danger mx-auto my-1" %>
 </div>
-<div>
+<div><% if @user.image.attached? %>
+    <%= image_tag @user.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+</div>
 <div><%= @user.name %></div>
 <div><%= @user.email %></div>
 <div><%= @user.birthday %></div>
 <div><%= @user.gender_id %></div>
+</div>

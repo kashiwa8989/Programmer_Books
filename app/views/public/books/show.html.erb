@@ -1,2 +1,43 @@
-<h1>Public::Books#show</h1>
-<p>Find me in app/views/public/books/show.html.erb</p>
+<div class="container  px-8 px-sm-8">
+  <h1>本の紹介</h1>
+
+    <div class = row>
+  　   <div class="col-3 offset-md-1"></div>
+      <div class="col-3">
+        <% if @book.image.attached? %>
+        <%= image_tag @book.image, size: "300x300" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "300x300" %>
+        <% end %></div>
+    </div>
+
+    <div class = row>
+  　   <div class="col-3 offset-md-1">投稿者</div>
+      <div class="col-3"><%= @user.name %></div>
+    </div>
+
+    <div class = row>
+  　   <div class="col-3 offset-md-1">本の名前</div>
+      <div class="col-3"><%= @book.title %></div>
+    </div>
+
+    <div class = row>
+  　   <div class="col-3 offset-md-1">本の著者</div>
+      <div class="col-3"><%= @book.author %></div>
+    </div>
+
+    <div class = row>
+  　   <div class="col-3 offset-md-1">本の詳細</div>
+      <div class="col-3"><%= @book.introduction %></div>
+    </div>
+
+    <div>
+		<% if @book.user == current_user %>
+      <td><%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+      <td><%= link_to '削除', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+    <% end %>
+	  <%#= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-outline-danger mx-auto my-1" %>
+	  </div>
+
+  </div>
+</div>

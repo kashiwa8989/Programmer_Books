@@ -32,7 +32,7 @@ class Public::UsersController < ApplicationController
 
   private
   def user_params
-  	  params.require(:user).permit(:is_deleted, :name, :email, :password, :gender_id, :birthday)
+  	  params.require(:user).permit(:is_deleted, :name, :email, :password, :gender_id, :birthday, :image)
   end
 
   def ensure_correct_customer
