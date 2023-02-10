@@ -31,6 +31,8 @@
       <div class="col-3"><%= @book.introduction %></div>
     </div>
 
+
+
     <div>
 		<% if @book.user == current_user %>
       <td><%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
@@ -50,6 +52,25 @@
       <% end %>
       <% end %>
     </div>
+      <%= form_with model: @book do |f| %>
+      <h5>総合評価</h5>
+       <div class="post_form">
+        <%= f.radio_button :rate, 5 ,id: 'star1'%>
+        <label for="star1"><span class="text">最高</span>★</label>
+
+        <%= f.radio_button :rate, 4 ,id: 'star2'%>
+        <label for="star2"><span class="text">良い</span>★</label>
+
+        <%= f.radio_button :rate, 3 ,id: 'star3'%>
+        <label for="star3"><span class="text">普通</span>★</label>
+
+        <%= f.radio_button :rate, 2 ,id: 'star4'%>
+        <label for="star4"><span class="text">悪い</span>★</label>
+
+        <%= f.radio_button :rate, 1 ,id: 'star5'%>
+        <label for="star5"><span class="text">最悪</span>★</label>
+      </div>
+      <% end %>
     <div>
       <%= form_with model: [@book, @book_comment] do |f| %>
       <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>

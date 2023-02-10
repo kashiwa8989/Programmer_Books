@@ -7,6 +7,7 @@ class Public::BooksController < ApplicationController
     @books = Book.all
     @book = Book.new
     @users = User.all
+    @book_comments = BookComment.all
   end
 
   def show
