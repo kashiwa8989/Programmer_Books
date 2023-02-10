@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_08_063819) do
+ActiveRecord::Schema.define(version: 2023_02_10_065923) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 2023_02_08_063819) do
     t.integer "user_id", null: false
     t.integer "book_id", null: false
     t.text "comment", null: false
-    t.float "rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "rate"
   end
 
   create_table "books", force: :cascade do |t|
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2023_02_08_063819) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.integer "rate"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -78,9 +79,8 @@ ActiveRecord::Schema.define(version: 2023_02_08_063819) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "follower_id", null: false
-    t.integer "followed_id", null: false
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

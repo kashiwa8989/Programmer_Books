@@ -1,6 +1,12 @@
 class Public::UsersController < ApplicationController
+  def index
+    @users = User.all
+    @book = Book.new
+  end
+
   def show
     @user = User.find(params[:id])
+    @users = User.all
   end
 
   def edit
@@ -11,15 +17,12 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
   if @user.update(user_params)
     redirect_to user_path(@user)
-
   else
     render 'edit'
   end
-
   end
 
   def unsubscribe
-
   end
 
   def withdraw

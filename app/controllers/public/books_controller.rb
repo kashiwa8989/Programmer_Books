@@ -5,12 +5,15 @@ class Public::BooksController < ApplicationController
 
   def index
     @books = Book.all
-    @user = User.all
+    @book = Book.new
+    @users = User.all
+    @book_comments = BookComment.all
   end
 
   def show
     @book = Book.find(params[:id])
     @user = User.all
+    @book_comment = BookComment.new
   end
 
   def edit
@@ -48,5 +51,5 @@ class Public::BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :author, :introduction, :image)
   end
-
 end
+

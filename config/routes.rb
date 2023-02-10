@@ -23,15 +23,19 @@ namespace :admin do
 end
 
 scope module: :public do
-  resources :books, only: [:index, :create, :new, :show, :edit, :update, :destroy]
+  resources :books, only: [:index, :create, :new, :show, :edit, :update, :destroy] do
+    resources :book_comments, only: [:create, :destroy]
+  end
   get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
   patch "/users/:id/withdraw" => "users#withdraw", as: "withdraw"
-  resources :users, only: [:show, :update, :edit]
-  resources :book_comments, only: [:create, :destroy]
-  resources :relationships, only: [:create, :destroy]
+  resources :users, only: [:show, :update, :edit, :index] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+  end
+
+
   root "homes#top"
-
-
 end
 
 end
