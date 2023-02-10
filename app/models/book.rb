@@ -2,6 +2,7 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :book_comments, dependent: :destroy
   has_one_attached :image
+<<<<<<< HEAD
 
   def getPercent(number)
    if number.present?
@@ -13,4 +14,8 @@ class Book < ApplicationRecord
      return 0
    end
   end
+=======
+  
+
+>>>>>>> f540d95b9be2cc0db120c4439b4f8f77252a6877
 end
