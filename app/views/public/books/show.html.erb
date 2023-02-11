@@ -44,39 +44,93 @@
 	  <div>
       <p>コメント件数：<%= @book.book_comments.count %></p>
       <% @book.book_comments.each do |book_comment| %>
-      <p><%#= image_tag book_comment.user.image(100,100) %></p>
-      <%= book_comment.user.name %>
-      <%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %>
-      <% if book_comment.user == current_user %>
-      <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
-      <% end %>
+        <p><%#= image_tag book_comment.user.image(100,100) %></p>
+        <%= book_comment.user.name %>
+        <%= book_comment.created_at.strftime('%Y/%m/%d') %>
+        <%= simple_format(book_comment.comment) %>
+
+        <div id="book_comment_<%=book_comment.id %>"></div>
+
+        <% if book_comment.user == current_user %>
+          <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
+        <% end %>
+
+        <script>
+          var elem = document.getElementById('book_comment_<%=book_comment.id %>');
+          var opt = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            score: <%= book_comment.star ||= 0 %>,
+            readOnly: true
+            };
+          raty(elem,opt);
+        </script>
+
       <% end %>
     </div>
-      <%= form_with model: @book do |f| %>
-      <h5>総合評価</h5>
-       <div class="post_form">
-        <%= f.radio_button :rate, 5 ,id: 'star1'%>
-        <label for="star1"><span class="text">最高</span>★</label>
 
-        <%= f.radio_button :rate, 4 ,id: 'star2'%>
-        <label for="star2"><span class="text">良い</span>★</label>
+      <!--<%#= form_with model: [@book, @book_comment] do |f| %>-->
+      <!--<h5>総合評価</h5>-->
+      <!-- <div class="post_form">-->
+      <!--  <%#= f.radio_button :rate, 5 ,id: 'star1'%>-->
+      <!--  <label for="star1"><span class="text">最高</span>★</label>-->
 
-        <%= f.radio_button :rate, 3 ,id: 'star3'%>
-        <label for="star3"><span class="text">普通</span>★</label>
+      <!--  <%#= f.radio_button :rate, 4 ,id: 'star2'%>-->
+      <!--  <label for="star2"><span class="text">良い</span>★</label>-->
 
-        <%= f.radio_button :rate, 2 ,id: 'star4'%>
-        <label for="star4"><span class="text">悪い</span>★</label>
+      <!--  <%#= f.radio_button :rate, 3 ,id: 'star3'%>-->
+      <!--  <label for="star3"><span class="text">普通</span>★</label>-->
 
-        <%= f.radio_button :rate, 1 ,id: 'star5'%>
-        <label for="star5"><span class="text">最悪</span>★</label>
-      </div>
-      <% end %>
+      <!--  <%#= f.radio_button :rate, 2 ,id: 'star4'%>-->
+      <!--  <label for="star4"><span class="text">悪い</span>★</label>-->
+
+      <!--  <%#= f.radio_button :rate, 1 ,id: 'star5'%>-->
+      <!--  <label for="star5"><span class="text">最悪</span>★</label>-->
+      <!--</div>-->
+      <!--<%# end %>-->
     <div>
       <%= form_with model: [@book, @book_comment] do |f| %>
       <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+
+
+      <!-- 評価javascript -->
+
+      <p>評価:</P>
+      <div class="row">
+      <div class="col-md-3 position-static">
+        <div id="post_raty"></div>
+
+          <script>
+            var elem = document.getElementById('post_raty');
+            var opt = {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'book_comment[star]'
+              };
+            raty(elem,opt);
+          </script>
+      </div>
+      </div>
+
       <%= f.submit "送信する" %>
       <% end %>
+
+
     </div>
 
   </div>
 </div>
+
+<!--<script>-->
+<!--    $('#star').empty();-->
+<!--    new Raty(document.querySelector('#star'), {-->
+<!--      size     : 36,-->
+<!--      starOff:  '<%#= asset_path('star-off.png') %>',-->
+<!--      starOn : '<%#= asset_path('star-on.png') %>',-->
+<!--      starHalf: '<%#= asset_path('star-half.png') %>',-->
+<!--      scoreName: 'book[star]',-->
+<!--      half: true-->
+<!--    });-->
+<!--  </script>-->
