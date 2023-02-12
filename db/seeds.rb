@@ -9,3 +9,12 @@ Admin.create!(
    email: 'sample-email@admin',
    password: 'admin1'
 )
+
+Tag.create([
+    { name: 'スターバックス' },
+    { name: 'ドトール' },
+    { name: 'エクセルシオール'},
+    { name: 'タリーズ'},
+    { name: 'サンマルク'},
+    { name: 'コメダ'}
+    ])
