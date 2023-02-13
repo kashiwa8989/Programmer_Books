@@ -10,15 +10,15 @@
                      }
       %>
     <% end %>
-    <thead>
+    <thead class = "thead-dark">
       <tr>
         <th>投稿者</th>
         <th>本の名前</th>
         <th>本の画像</th>
         <th>タグ</th>
         <th>コメント件数</th>
-        <td>フォロー数</td>
-        <td>フォロワー数</td>
+        <th>フォロー数</th>
+        <th>フォロワー数</th>
         <th></th>
         <th></th>
       </tr>
@@ -35,11 +35,12 @@
             <%= image_tag 'no_image', size: "200x200" %>
             <% end %>
         </th>
-        <th><%= book.tags.name %></th>
+        <th><% book.tags.each do |tag| %>
+            <%= tag.name %></br>
+            <% end %></th>
         <th><%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %></th>
         <th><%= book.user.followings.count %></th>
         <th><%= book.user.followers.count %></th>
-
         <th>
         <% if current_user != book.user%>
         <% if current_user.following?(book.user) %>

@@ -14,8 +14,7 @@
   <% @users.each do |user| %>
    <tr>
     <th><%= user.id %></th>
-    <%#= link_to user.name, admin_user_path(user.id)  %>
-    <th><%= user.name %></th>
+    <th><%= link_to user.name, admin_user_path(user.id) %></th>
     <th><%= user.email %></th>
     <th><% if user.is_deleted == false %>
         <p style="color: red;">有効</p>

@@ -16,8 +16,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 namespace :admin do
-  get 'users/index'
-  get 'users/show'
+  resources :users, only: [:index, :show]
   resources :genres, only: [:index, :create, :edit, :update]
 
 end
@@ -33,8 +32,7 @@ scope module: :public do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-
-
+  get 'search' => 'books#search'
   root "homes#top"
 end
 

@@ -27,7 +27,7 @@ class Public::BooksController < ApplicationController
       redirect_to books_path
     else
       @books = Book.all
-      render 'index'
+      render 'new'
     end
   end
 
@@ -44,6 +44,12 @@ class Public::BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     redirect_to books_path
+  end
+
+  def search
+  @books = Book.search(params[:keyword])
+  @keyword = params[:keyword]
+  render "index"
   end
 
   private
