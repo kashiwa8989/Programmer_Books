@@ -3,12 +3,13 @@
 
     <div class = row>
   　   <div class="col-3 offset-md-1"></div>
-      <div class="col-3">
-        <% if @book.image.attached? %>
-        <%= image_tag @book.image, size: "300x300" %>
-        <% else %>
-        <%= image_tag 'no_image', size: "300x300" %>
-        <% end %></div>
+        <div class="col-3">
+          <% if @book.image.attached? %>
+          <%= image_tag @book.image, size: "300x300" %>
+          <% else %>
+          <%= image_tag 'no_image', size: "300x300" %>
+          <% end %>
+        </div>
     </div>
 
     <div class = row>
@@ -43,13 +44,17 @@
       <td><%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
       <td><%= link_to '削除', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
     <% end %>
-	  <%#= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-outline-danger mx-auto my-1" %>
 	  </div>
 
 	  <div>
       <p>コメント件数：<%= @book.book_comments.count %></p>
       <% @book.book_comments.each do |book_comment| %>
-        <p><%#= image_tag book_comment.user.image(100,100) %></p>
+        <div><% if book_comment.user.image.attached? %>
+            <%= image_tag book_comment.user.image, size: "50x50" %>
+            <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+            <% end %>
+        </div>
         <%= book_comment.user.name %>
         <%= book_comment.created_at.strftime('%Y/%m/%d') %>
         <%= simple_format(book_comment.comment) %>

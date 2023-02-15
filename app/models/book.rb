@@ -5,9 +5,9 @@ class Book < ApplicationRecord
   has_many :tags, through: :book_tags
   has_one_attached :image
 
+
   def self.search(keyword)
   where(["title like? OR author like?", "%#{keyword}%", "%#{keyword}%"])
   end
-
 
 end

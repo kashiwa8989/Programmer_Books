@@ -1,18 +1,4 @@
 <ul class="nav justify-content-end">
-  <li class="nav-item ">
-    <span style="margin: 110px">
-    <%= link_to new_book_path, class: "nav-link text-light" do %>
-      <button type="button" class="btn btn-light" style="width:100px;">新規投稿</button>
-    <% end %>
-    </span>
-  </li>
-  <li class="nav-item">
-    <span style="margin: 110px">
-    <%= link_to books_path, class: "nav-link text-light" do %>
-      <button type="button" class="btn btn-light" style="width:100px;">投稿一覧</button>
-    <% end %>
-    </span>
-  </li>
   <li class="nav-item">
     <span style="margin: 110px">
     <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
@@ -28,12 +14,9 @@
     </span>
   </li>
 </ul>
-<!--<div style="size: 80%; margin: 0 0 0 auto;" >-->
-<!--  <%#= render 'layouts/search' %>-->
+<!--<div class="search-form">-->
+<!--  <%#= form_with url: search_path, method: :get, local: true do |f| %>-->
+<!--    <%#= f.text_field :keyword, value: @keyword %>-->
+<!--    <%#= f.submit "検索" %>-->
+<!--  <%# end %>-->
 <!--</div>-->
-<div class="search-form">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, value: @keyword %>
-    <%= f.submit "検索" %>
-  <% end %>
-</div>

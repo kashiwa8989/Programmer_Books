@@ -1,3 +1,17 @@
-<h1>本サイトについて</h1>
-<p>このサイトはプログラミング初心者から現役エンジニアまで様々な人たちの学習で参考になった本などを紹介し合い、レビューするサイトです。</p>
-<p>プログラミングの勉強で参考になった本をどしどし紹介してプログラミングスキルを向上させていきましょう！！</p>
+<div class="main-container col-5 pt-5 offset-3">
+    <p class="top-font">
+      ようこそ、Programmer_Booksへ！</br>
+      このサイトはプログラミング初心者から現役エンジニアまで様々な人たちの</br>
+      学習で参考になった本などを紹介し合い、レビューするサイトです。</br>
+      プログラミングの勉強で参考になった本をどしどし紹介してプログラミングスキルを向上させていきましょう！！
+    </p>
+
+    <div class="row">
+      <div class= "col-12 pt-6">まだ会員登録してない人は新規会員登録を、登録済みの方はログインしてください！</div>
+      <div class = "col-12 pt-4">
+        <a><%= link_to "新規会員登録",new_user_registration_path, class: "btn btn-border" %></a>
+        <a><%= link_to "ログイン",new_user_session_path, class: "btn btn-border" %></a>
+      </div>
+
+    </div>
+</div>

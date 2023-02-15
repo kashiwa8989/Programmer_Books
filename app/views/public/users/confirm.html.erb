@@ -1,0 +1,5 @@
+ <% @books.each do |book| %>
+  <%=link_to book_path(book.id) do %>
+  <%= book.title.truncate(25) %>
+  <% end %>
+<% end %>

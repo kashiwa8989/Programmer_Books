@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :books
-  has_many :books, dependent: :destroy, foreign_key: :book_user_id
+  has_many :books, dependent: :destroy, foreign_key: :user_id
   has_many :book_comments,dependent: :destroy
   # フォローする・されるの関係
   has_many :relationships,class_name:"Relationship",foreign_key:"follower_id",dependent: :destroy

@@ -7,9 +7,14 @@ class Public::BooksController < ApplicationController
     @book = Book.new
     @users = User.all
     @book_comments = BookComment.all
-    @books = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
-  end
 
+    if params[:tag_id].present?
+      @books = Tag.find(params[:tag_id]).books.where(is_draft: :false).order(params[:sort]).page(params[:page]).per(10)
+    else
+      @books = Book.where(is_draft: :false).order(params[:sort]).page(params[:page]).per(10)
+    end
+  end
+# .page(params[:page]).per(12)
   def show
     @book = Book.find(params[:id])
     @user = User.all
@@ -23,6 +28,7 @@ class Public::BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
+
     if @book.save
       redirect_to books_path
     else
@@ -55,7 +61,7 @@ class Public::BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :introduction, :image, tag_ids: [])
+    params.require(:book).permit(:title, :author, :introduction, :is_draft, :image, tag_ids: [])
   end
 end
 
