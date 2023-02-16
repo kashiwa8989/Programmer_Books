@@ -29,7 +29,11 @@
 
     <div class = row>
   　   <div class="col-3 offset-md-1">タグ</div>
-      <div class="col-3"><%= @book.tags.name %></div>
+      <div class="col-3">
+        <% @book.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %>
+      </div>
     </div>
 
     <div class = row>
