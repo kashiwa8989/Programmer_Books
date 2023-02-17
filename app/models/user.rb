@@ -14,6 +14,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :gender_id, presence: true
+  validates :birthday, presence: true
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
+
+
   enum gender_id: { man: 0, woman: 1}
 
   # フォローしたときの処理
@@ -28,11 +36,4 @@ class User < ApplicationRecord
   def following?(user)
    followings.include?(user)
   end
-  # def get_profile_image(width, height)
-  # unless profile_image.attached?
-  #   file_path = Rails.root.join('app/assets/images/no_image.jpg')
-  #   profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-  # end
-  # profile_image.variant(resize_to_limit: [width, height]).processed
-  # end
 end
