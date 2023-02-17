@@ -11,10 +11,32 @@ Admin.create!(
 )
 
 Tag.create([
-    { name: 'スターバックス' },
-    { name: 'ドトール' },
-    { name: 'エクセルシオール'},
-    { name: 'タリーズ'},
-    { name: 'サンマルク'},
-    { name: 'コメダ'}
+    { name: 'C言語' },
+    { name: 'C＋＋' },
+    { name: 'Java'},
+    { name: 'C#'},
+    { name: 'JavaScript'},
+    { name: 'PHP'},
+    { name: 'Ruby'},
+    { name: 'TypeScript'},
+    { name: 'Python'},
+    { name: 'R言語'},
+    { name: 'Go言語'},
+    { name: 'Swift'},
+    { name: 'Kotlin'},
+    { name: 'Objective-C'},
+    { name: 'Visual Basic'},
+    { name: 'BASIC'},
+    { name: 'Google Apps Script'},
+    { name: 'Haskell'},
+    { name: 'Scala'},
+    { name: 'Groovy'},
+    { name: 'Delphi'},
+    { name: 'Dart'},
+
+
+    { name: 'Delphi'},
+
+    { name: 'Dart'}
+
     ])

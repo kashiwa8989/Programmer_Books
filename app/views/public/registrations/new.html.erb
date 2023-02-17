@@ -29,14 +29,12 @@
     </div>
     </div>
     <div class="row">
-    <div class="col-3 offset-md-1">
-      <%= f.label "性別" %><br />
+    <div class="col-3 offset-md-1"><%= f.label :性別 %></div>
     <div class="col-3">
-      <%= f.label :man  %>
+      <%= f.label :男性  %>
       <%= f.radio_button :gender_id, :man %>
-      <%= f.label :woman  %>
+      <%= f.label :女性  %>
       <%= f.radio_button :gender_id, :woman %>
-    </div>
     </div>
     </div>
     <div class="row">
