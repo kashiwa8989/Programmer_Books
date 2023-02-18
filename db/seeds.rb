@@ -13,16 +13,24 @@ Admin.create!(
 Tag.create([
     { name: 'C言語' },
     { name: 'C＋＋' },
-    { name: 'Java'},
     { name: 'C#'},
+    { name: 'Java'},
     { name: 'JavaScript'},
     { name: 'PHP'},
     { name: 'Ruby'},
+    { name: 'HTML/CSS'},
     { name: 'TypeScript'},
     { name: 'Python'},
     { name: 'R言語'},
     { name: 'Go言語'},
     { name: 'Swift'},
+    { name: 'AWS（Amazon Web Services）'},
+    { name: 'Visual Studio Code'},
+    { name: 'ITパスポート'},
+    { name: '基本情報技術者'},
+    { name: '応用情報技術者'},
+    { name: 'IT資格関係'},
+
     { name: 'Kotlin'},
     { name: 'Objective-C'},
     { name: 'Visual Basic'},
@@ -33,10 +41,13 @@ Tag.create([
     { name: 'Groovy'},
     { name: 'Delphi'},
     { name: 'Dart'},
-
-
-    { name: 'Delphi'},
-
-    { name: 'Dart'}
-
+    { name: 'D言語'},
+    { name: 'Perl'},
+    { name: 'COBOL'},
+    { name: 'SQL'},
+    { name: 'FORTRAN'},
+    { name: 'MATLAB'},
+    { name: 'Scratch'},
+    { name: 'Dart'},
+    { name: 'その他'}
     ])

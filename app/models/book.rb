@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
   validates :introduction, presence: true
-  validates :is_draft, presence: true
+  # validates :is_draft, presence: true
 
 
   def self.search(keyword)

@@ -9,9 +9,9 @@ class Public::BooksController < ApplicationController
     @book_comments = BookComment.all
 
     if params[:tag_id].present?
-      @books = Tag.find(params[:tag_id]).books.where(is_draft: :false).order(params[:sort]).page(params[:page]).per(10)
+      @books = Tag.find(params[:tag_id]).books.where(is_draft: :false).order(created_at: :desc).page(params[:page]).per(9)
     else
-      @books = Book.where(is_draft: :false).order(params[:sort]).page(params[:page]).per(10)
+      @books = Book.where(is_draft: :false).order(created_at: :desc).page(params[:page]).per(9)
     end
   end
 # .page(params[:page]).per(12)

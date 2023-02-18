@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all
-    @books = @user.books.where(is_draft: false).page(params[:page]).per(8)
+    @books = @user.books.where(is_draft: false).order(created_at: :desc).page(params[:page]).per(8)
     # @books = Book.where(is_draft: :true).order("created_at DESC").page(params[:page]).per(8)
   end
   # .page(params[:page]).per(8)

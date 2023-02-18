@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
 
 
-  enum gender_id: { man: 0, woman: 1}
+  enum gender_id: { "男性": 0, "女性": 1}
 
   # フォローしたときの処理
   def follow(user_id)

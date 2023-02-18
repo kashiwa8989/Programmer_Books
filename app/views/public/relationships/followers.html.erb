@@ -13,9 +13,9 @@
       <tr>
         <td>
           <% if user.image.attached? %>
-            <%= image_tag user.image, size: "80x80" %>
+            <%= image_tag user.image, style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %>
           <% else %>
-            <%= image_tag 'no_image', size: "80x80" %>
+            <%= image_tag 'no_image', style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %>
           <% end %>
         </td>
         <td><%= user.name %></td>
