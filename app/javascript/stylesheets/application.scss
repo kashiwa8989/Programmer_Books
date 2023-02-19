@@ -4,7 +4,7 @@
 
 .main-container {
   //background-image: image-url('cake1.png');
-  background-image: url('../images/no_image.jpg');
+  // background-image: url('../images/no_image.jpg');
   height: 300px;
   text-align: center;
   background-size:cover;
@@ -35,15 +35,8 @@ a.btn-border:hover {
 }
 
 footer {
-  // display: flex;
-  // margin-top: auto;
-  // padding: 30px 0;
   background: #89c7de;
   color: #fff;
-  // text-align: center;
-  // position: fixed;
-  // position: absolute;
-  // bottom: 0;
 }
 
 .center{
@@ -87,7 +80,7 @@ height: 10em;
 @media screen and (max-width: 575.98px) {}
 
 .logo img{
-  width:60px; height:50px;
+  width:80px; height:50px;
 }
 
 .submit_button{
@@ -96,4 +89,12 @@ height: 10em;
 .text_area{
   width: 100%;
   height: 300px;
+}
+
+.show_img{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  // object-fit: contain縦横長い方をカットして表示
+  // object-fit: contain　画像全部含めて表示
 }

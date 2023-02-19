@@ -2,14 +2,13 @@
   <h1>本の紹介</h1>
 
     <div class = "row">
-  　   <div class="col-3 offset-md-1"></div>
-        <div class="col-3">
+      <div class="col-md-4 offset-md-4">
           <% if @book.image.attached? %>
-          <%= image_tag @book.image, size: "300x300" %>
+          <%= image_tag @book.image, class: "show_img" %>
           <% else %>
-          <%= image_tag 'no_image', size: "300x300" %>
+          <%= image_tag 'no_image', class: "show_img" %>
           <% end %>
-        </div>
+      </div>
     </div>
 
     <div class="row justify-content-center">
@@ -45,7 +44,7 @@
 
 
 
-    <div>
+    <div class="text-center">
 		<% if @book.user == current_user %>
       <td><%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
       <td><%= link_to '削除', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
@@ -90,7 +89,7 @@
 
     <div>
       <%= form_with model: [@book, @book_comment] do |f| %>
-      <%= f.text_area :comment, size: "120x10", placeholder: "コメントをここに" %>
+      <%= f.text_area :comment, rows: "10", class:"form-control", placeholder: "コメントをここに" %>
 
 
       <!-- 評価javascript -->

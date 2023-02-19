@@ -1,4 +1,4 @@
-<div class="container ml-3">
+<div class="container">
  <% @books.each do |book| %>
   <%=link_to book_path(book.id) do %>
   <%= book.title.truncate(25) %>

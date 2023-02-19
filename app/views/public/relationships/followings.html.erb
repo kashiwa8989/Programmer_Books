@@ -1,12 +1,12 @@
-<h2>Follow Users</h2>
+<div class="container">
+<h2>フォロー一覧</h2>
 <% if @users.exists? %>
+<div class="table-responsive">
 <table class='table'>
   <thead>
     <tr>
       <th></th>
-      <th>ニックネーム</th>
-      <th>フォロー数</th>
-      <th>フォロワー数</th>
+      <th nowrap>ニックネーム</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,13 +15,13 @@
       <tr>
         <td>
           <% if user.image.attached? %>
-            <%= image_tag user.image, size: "80x80" %>
+            <%= image_tag user.image, style: "border-radius: 50%; width: 80px; height: 80px; object-fit:cover;" %>
           <% else %>
-            <%= image_tag 'no_image', size: "80x80" %>
+            <%= image_tag 'no_image', style: "border-radius: 50%; width: 80px; height: 80px; object-fit:cover;" %>
           <% end %>
         </td>
-        <td><%= user.name %></td>
-        <td>
+        <td nowrap><%= user.name %></td>
+        <td nowrap>
         <% if current_user != user%>
         <% if current_user.following?(user) %>
         <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete %>
@@ -30,13 +30,15 @@
         <% end %>
         <% end %>
         </td>
-        <td><%= link_to 'Show', user %></td>
+        <td nowrap><%= link_to 'プロフィールへ', user %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
   <%#= render '/users/index', users: @users %>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
+</div>
