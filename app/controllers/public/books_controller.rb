@@ -14,7 +14,7 @@ class Public::BooksController < ApplicationController
       @books = Book.where(is_draft: :false).order(created_at: :desc).page(params[:page]).per(9)
     end
   end
-# .page(params[:page]).per(12)
+
   def show
     @book = Book.find(params[:id])
     @user = User.all
@@ -53,7 +53,7 @@ class Public::BooksController < ApplicationController
   end
 
   def search
-  @books = Book.search(params[:keyword])
+  @books = Book.search(params[:keyword]).page(params[:page]).per(9)
   @keyword = params[:keyword]
   render "index"
   end
