@@ -1,7 +1,14 @@
-<div class="container my-5">
+<div class="container">
   <div class="row">
+    <% if @book.errors.any? %>
+        <%= @book.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
     <div class="offset-1">
-      <!--%= render "public/shared/error_messages", resource: resource %>-->
       <h2 class="red-border px-3 pb-1">投稿編集</h2>
     </div>
   </div>

@@ -63,5 +63,6 @@ class Public::BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :author, :introduction, :is_draft, :image, tag_ids: [])
   end
+
 end
 

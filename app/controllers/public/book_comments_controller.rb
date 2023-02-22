@@ -7,7 +7,9 @@ class Public::BookCommentsController < ApplicationController
     # comment.user_id = current_user.id
     comment.book_id = book.id
     if comment.save
-    redirect_to request.referer
+      redirect_to request.referer
+    else
+      redirect_to request.referer
     end
   end
 

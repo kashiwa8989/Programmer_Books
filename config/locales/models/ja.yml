@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー情報
+      book: 本
+      tag: タグ
+      book_comment: コメント
+    attributes:
+      user:
+        name: ニックネーム
+        birthday: 生年月日
+        gender_id: 性別
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+      book:
+        title: 本の名前
+        author: 本の著者
+        introduction: 本の詳細
+        tags: タグ
+        is_draft: 公開か下書き
+      tag:
+        name: タグ
+      book_comment:
+        comment: コメント
+        star: 星

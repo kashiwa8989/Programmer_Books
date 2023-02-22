@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
-#   顧客用
+#   会員用
 # URL /customers/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
+devise_scope :user do
+  post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+end
 
 
   # 管理者用
@@ -38,5 +42,4 @@ scope module: :public do
   get 'search' => 'books#search'
   root "homes#top"
 end
-
 end
