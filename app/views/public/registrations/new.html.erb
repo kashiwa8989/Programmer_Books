@@ -1,4 +1,4 @@
-<div class="container mt-5 mb-5">
+<div class="container mt-sm-5 mb-sm-5">
   <%= render "public/shared/error_messages", resource: resource %>
   <div class="row my-3">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
@@ -11,26 +11,26 @@
 
 
     <div class="row">
-      <div class="col-3 offset-md-1"><%= f.label "プロフィール画像" %></div>
-      <div class="col-3"><%= f.file_field :image, accept: "image/*" %></div>
+      <div class="col-sm-3 offset-md-1"><%= f.label "プロフィール画像" %></div>
+      <div class="col-sm-3"><%= f.file_field :image, accept: "image/*" %></div>
     </div>
     <div class="row">
-      <div class="col-3 offset-md-1"><%= f.label "ニックネーム" %></div>
-      <div class="col-3"><%= f.text_field :name, :size => "10", placeholder: "プロフラマーs" %></div>
+      <div class="col-sm-3 offset-md-1"><%= f.label "ニックネーム" %></div>
+      <div class="col-sm-3"><%= f.text_field :name, :size => "10", placeholder: "プロフラマーs" %></div>
     </div>
     <div class="row">
-      <div class="col-3 offset-md-1"><%= f.label "メールアドレス" %></div>
-      <div class="col-3"><%= f.email_field :email, :size => "25", placeholder: "sample@example.com" %></div>
+      <div class="col-sm-3 offset-md-1"><%= f.label "メールアドレス" %></div>
+      <div class="col-sm-3"><%= f.email_field :email, :size => "25", placeholder: "sample@example.com" %></div>
     </div>
     <div class="row">
-    <div class="col-3 offset-md-1"><%= f.label :birthday %></div>
-    <div class="col-3">
+    <div class="col-sm-3 offset-md-1"><%= f.label :birthday %></div>
+    <div class="col-sm-3">
     <%= f.date_select :birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 5), default: Date.new(1989, 1, 1) %>
     </div>
     </div>
     <div class="row">
     <div class="col-3 offset-md-1"><%= f.label :性別 %></div>
-    <div class="col-3">
+    <div class="col-sm-3">
       <%= f.label :男性  %>
       <%= f.radio_button :gender_id, :男性 %>
       <%= f.label :女性  %>
@@ -38,7 +38,7 @@
     </div>
     </div>
     <div class="row">
-      <div class="col-3 offset-md-1">
+      <div class="col-sm-3 offset-md-1">
         <% if @minimum_password_length %>
           <%= f.label "パスワード(#{@minimum_password_length}文字以上)" %>
         <% end %>
@@ -46,11 +46,11 @@
       <div class="col-3"><%= f.password_field :password %></div>
     </div>
     <div class="row">
-      <div class="col-3 offset-md-1"><%= f.label "パスワード(確認用)" %></div>
+      <div class="col-sm-3 offset-md-1"><%= f.label "パスワード(確認用)" %></div>
       <div class="col-3"><%= f.password_field :password_confirmation %></div>
     </div>
     <div class="row">
-      <div class="col-2 offset-md-1 mt-3 mb-5">
+      <div class="col-sm-2 offset-md-1 mt-3 mb-5">
         <%= f.submit "新規登録", class:"col btn btn-success" %>
       </div>
     </div>
