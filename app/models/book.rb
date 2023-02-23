@@ -9,7 +9,7 @@ class Book < ApplicationRecord
   validates :author, presence: true
   validates :introduction, presence: true
   validates :tags, presence: true
-  validates :is_draft, presence: true
+  validates :is_draft, inclusion: {in: [true, false]}
 
 
 

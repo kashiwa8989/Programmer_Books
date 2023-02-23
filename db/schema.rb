@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2023_02_16_080229) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.boolean "is_draft", default: false
+    t.boolean "is_draft", default: true
   end
 
   create_table "genres", force: :cascade do |t|

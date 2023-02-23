@@ -21,7 +21,6 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
 
-
   enum gender_id: { "男性": 0, "女性": 1}
 
   # フォローしたときの処理
@@ -35,5 +34,15 @@ class User < ApplicationRecord
   # フォローしているか判定
   def following?(user)
    followings.include?(user)
+  end
+
+  def self.guest
+    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = 'サンプル'
+      user.birthday = '2000-01-01'
+      user.gender_id = '男性'
+    end
   end
 end

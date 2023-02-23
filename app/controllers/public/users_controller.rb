@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :guest_user_check, only: [:edit, :update, :withdraw]
+
   def index
     @users = User.all
     @book = Book.new
@@ -8,9 +10,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = User.all
     @books = @user.books.where(is_draft: false).order(created_at: :desc).page(params[:page]).per(9)
-    # @books = Book.where(is_draft: :true).order("created_at DESC").page(params[:page]).per(8)
   end
-  # .page(params[:page]).per(8)
 
   def edit
     @user = User.find(params[:id])
@@ -18,11 +18,11 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-  if @user.update(user_params)
-    redirect_to user_path(@user)
-  else
-    render 'edit'
-  end
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render 'edit'
+    end
   end
 
   def unsubscribe
@@ -32,7 +32,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books.where(is_draft: true).order('created_at DESC')
   end
-  # .page(params[:page]).per(20)
 
   def withdraw
     @user = User.find(params[:id])
@@ -52,5 +51,12 @@ class Public::UsersController < ApplicationController
     if current_user.id != @user.id
       redirect_to root_path
     end
+  end
+
+  def guest_user_check
+    # if current_user.email == "aaa@aaa.com"
+      # flash[:notice] ="許可されていない操作です"
+      redirect_to root_path, notice: "許可されていない操作です" if current_user.email == "aaa@aaa.com"
+    # end
   end
 end

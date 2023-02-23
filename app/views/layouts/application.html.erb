@@ -61,6 +61,9 @@
 　　</nav>
 
         <main class="mt-4">
+        <% if flash[:notice] %>
+　　      <%= flash[:notice] %>
+　　    <% end %>
         <%= yield %>
         </main>
 

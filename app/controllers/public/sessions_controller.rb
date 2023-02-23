@@ -26,6 +26,12 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  def new_guest
+    user = User.guest
+    sign_in user   # ユーザーをログインさせる
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
   protected
 
   # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
