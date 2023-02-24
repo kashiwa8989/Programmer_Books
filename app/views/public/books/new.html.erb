@@ -45,7 +45,7 @@
     <%= f.radio_button :is_draft, :false %>
     <%= f.label :is_draft, "公開", {value: :false, style: "display: inline-block;"} %></div>
     <div style="padding-right:20px;">
-    <%= f.radio_button :is_draft, :true %>
+    <%= f.radio_button :is_draft, :true, checked: true%>
     <%= f.label :is_draft, "下書き保存", {value: :true, style: "display: inline-block;"} %></div>
   </div>
 </div>
