@@ -13,9 +13,9 @@
           <tr>
             <td>
               <% if book.image.attached? %>
-                <%= image_tag book.image%>
+                <%= image_tag book.image, style: "border-radius: 50%; width: 80px; height: 80px; object-fit:cover;"%>
               <% else %>
-                <%= image_tag 'no_image'%>
+                <%= image_tag 'no_image', style: "border-radius: 50%; width: 80px; height: 80px; object-fit:cover;"%>
               <% end %>
             </td>
             <td>

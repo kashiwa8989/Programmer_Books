@@ -16,8 +16,7 @@
   <div class="row my-3">
     <div class="offset-3 col-6">
 
-    <%#= form_with model: @user, url: user_registration_path do |f| %>
-    <%= form_for(@user) do |f| %>
+    <%= form_with model: @user, url: user_path, method: :patch do |f| %>
 
       <div class="form-group">
         <%= f.label :プロフィール画像, class: "brown-border px-3" %>
