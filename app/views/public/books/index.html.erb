@@ -1,73 +1,74 @@
 <div class="container ">
   <p><span class="bg-lightsecondary">　</span></p>
-   <table class="table ">
-     <%= form_tag books_path, method: :get, class: 'boards__searchForm' do %>
-      <%= select_tag :tag_id,
-                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                     {
-                       prompt: 'タグで絞り込み検索',
-                       onchange: 'submit(this.form);'
-                     }
-      %>
-    <% end %>
-     <div class="col-lg-9">
-     <div class="center"><h1>投稿一覧</h1></div>
-      <div class="row">
-        <% @books.each do |book| %>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <div class="card-header">
-                <%= book.user&.name || '名無し' %>
-              </div>
-              <% if book.image.attached? %>
-                <%= image_tag book.image, class: 'card-img-top card-img-preview' %>
-              <% else %>
-                <%= image_tag 'no_image', class: 'card-img-top card-img-preview' %>
-              <% end %>
-              <div class="card-body">
-                <h6 class="card-title">
-                  <%= link_to book.title, book_path(book.id) %>
-                </h6>
-                <div class="card-text">
-                  <div>
-                    <% book.tags.each do |tag| %>
-                      <span class="badge badge-secondary mr-2"><%= tag.name %></span>
-                    <% end %>
+    <table class="table ">
+      <%= form_tag books_path, method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :tag_id,
+                       options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                       {
+                         prompt: 'タグで絞り込み検索',
+                         onchange: 'submit(this.form);'
+                       }
+        %>
+      <% end %>
+      <div class="col-lg-9">
+        <div class="center"><h1>投稿一覧</h1></div>
+          <div class="row">
+            <% @books.each do |book| %>
+              <div class="col-md-4 mb-3">
+                <div class="card">
+                  <div class="card-header">
+                    <%= book.user&.name || '名無し' %>
                   </div>
-                  <div>
-                    <small class="text-black-50">
-                      <%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %>
-                    </small>
+                  <% if book.image.attached? %>
+                    <%= image_tag book.image, class: 'card-img-top card-img-preview' %>
+                  <% else %>
+                    <%= image_tag 'no_image', class: 'card-img-top card-img-preview' %>
+                  <% end %>
+                  <div class="card-body">
+                    <h6 class="card-title">
+                      <%= link_to book.title, book_path(book.id) %>
+                    </h6>
+                    <div class="card-text">
+                      <div>
+                        <% book.tags.each do |tag| %>
+                          <span class="badge badge-secondary mr-2"><%= tag.name %></span>
+                        <% end %>
+                      </div>
+                      <div>
+                        <small class="text-black-50">
+                          <%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %>
+                        </small>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <small class="text-black-50">
+                            Follow: <%= book.user.followings.count %>
+                          </small>
+                        </div>
+                        <div class="col-md-6">
+                          <small class="text-black-50">
+                            Follower: <%= book.user.followers.count %>
+                          </small>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <small class="text-black-50">
-                        Follow: <%= book.user.followings.count %>
+                  <% if current_user.id != book.user_id %>
+                    <div class="card-footer text-right">
+                      <small>
+                        <% if current_user.following?(book.user) %>
+                          <%= link_to "フォロー外す", user_relationships_path(book.user), method: :delete %>
+                        <% else %>
+                          <%= link_to "フォローする", user_relationships_path(book.user), method: :post %>
+                        <% end %>
                       </small>
                     </div>
-                    <div class="col-md-6">
-                      <small class="text-black-50">
-                        Follower: <%= book.user.followers.count %>
-                      </small>
-                    </div>
-                  </div>
+                  <% end %>
                 </div>
               </div>
-              <% if current_user.id != book.user_id %>
-                <div class="card-footer text-right">
-                  <small>
-                    <% if current_user.following?(book.user) %>
-                      <%= link_to "フォロー外す", user_relationships_path(book.user), method: :delete %>
-                    <% else %>
-                      <%= link_to "フォローする", user_relationships_path(book.user), method: :post %>
-                    <% end %>
-                  </small>
-                </div>
-              <% end %>
-            </div>
+            <% end %>
           </div>
-        <% end %>
-      </div>
-  </table>
-  <%= paginate @books %>
+      </table>
+    <%= paginate @books %>
+    </div>
 </div>
