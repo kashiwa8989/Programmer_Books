@@ -2,8 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :guest_user_check, only: [:edit, :update, :withdraw]
 
   def index
-    @users = User.all
-    @book = Book.new
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def show

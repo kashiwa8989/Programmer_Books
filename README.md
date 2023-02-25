@@ -25,15 +25,16 @@
 - プログラミングに興味があってその情報を集める
 
 ## 設計書
+- [ER図](https://app.diagrams.net/#G14uivcIXxCgM-hnqr5HMlljmXnXl4QLmH)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1Y8gwbT1aHCMZLhCnzAZkA-P7ufMI8I2C46LJjCKzx5I/edit#gid=742519667)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1GyEg6rRFWMWwOVou7Ud0ZTnaQ9q-Hs8e_0sNVVedboE/edit#gid=549108681)
 
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- フレームワーク：Ruby on Rails,Bootstrap
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
-　使用検討中です。
-<!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
-<!--- 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
+- ロゴ等は自作しています。外部からの素材は使用していません。
