@@ -13,44 +13,42 @@
 
     <div class="row justify-content-center">
       <div class="col-sm-6 pl-5">
-    <div class = "row">
-      <div class="col-4">投稿者</div>
-      <div class="col-8"><%= @book.user&.name || '名無し' %></div>
-    </div>
+        <div class = "row">
+          <div class="col-4">投稿者</div>
+          <div class="col-8"><%= @book.user&.name || '名無し' %></div>
+        </div>
 
-    <div class = "row">
-      <div class="col-4">本の名前</div>
-      <div class="col-8"><%= @book.title %></div>
-    </div>
+        <div class = "row">
+          <div class="col-4">本の名前</div>
+          <div class="col-8"><%= @book.title %></div>
+        </div>
 
-    <div class = "row">
-      <div class="col-4">本の著者</div>
-      <div class="col-8"><%= @book.author %></div>
-    </div>
+        <div class = "row">
+          <div class="col-4">本の著者</div>
+          <div class="col-8"><%= @book.author %></div>
+        </div>
 
-    <div class = "row">
-      <div class="col-4">タグ</div>
-      <div class="col-8">
-        <% @book.tags.each do |tag| %>
-          <%= tag.name %>
+        <div class = "row">
+          <div class="col-4">タグ</div>
+          <div class="col-8">
+            <% @book.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class = "row">
+          <div class="col-4">本の詳細</div>
+          <div class="col-8"><%= @book.introduction %></div>
+        </div>
+
+        <div class="text-center">
+    		<% if @book.user == current_user %>
+          <td><%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+          <td><%= link_to '削除', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
         <% end %>
-      </div>
-    </div>
-
-    <div class = "row">
-      <div class="col-4">本の詳細</div>
-      <div class="col-8"><%= @book.introduction %></div>
-    </div>
-
-
-
-    <div class="text-center">
-		<% if @book.user == current_user %>
-      <td><%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
-      <td><%= link_to '削除', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-    <% end %>
-	  </div>
-	  </div>
+    	  </div>
+	    </div>
 	  </div>
 
 	  <div>
@@ -83,22 +81,17 @@
             };
           raty(elem,opt);
         </script>
-
       <% end %>
     </div>
 
     <div>
       <%= form_with model: [@book, @book_comment] do |f| %>
       <%= f.text_area :comment, rows: "10", class:"form-control", placeholder: "コメントをここに" %>
-
-
-      <!-- 評価javascript -->
-
+      <!-- 星評価 -->
       <p>評価:</P>
       <div class="row">
-      <div class="col-md-3 position-static">
-        <div id="post_raty"></div>
-
+        <div class="col-md-3 position-static">
+          <div id="post_raty"></div>
           <script>
             var elem = document.getElementById('post_raty');
             var opt = {
@@ -109,10 +102,10 @@
               };
             raty(elem,opt);
           </script>
-      </div>
+        </div>
       </div>
       <%= f.submit "送信する" %>
       <% end %>
     </div>
-  </div>
 </div>
+

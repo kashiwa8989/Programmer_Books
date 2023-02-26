@@ -1,8 +1,8 @@
 <div class="container">
-<h2>フォロワー一覧</h2>
-<% if @users.exists? %>
-  <%= render 'relationship', users: @users %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+  <h2>フォロワー一覧</h2>
+    <% if @users.exists? %>
+      <%= render 'relationship', users: @users %>
+    <% else %>
+      <p>ユーザーはいません</p>
+    <% end %>
 </div>

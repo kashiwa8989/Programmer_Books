@@ -1,56 +1,54 @@
 <div class = "container" >
   <% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-<h1>本の新規投稿</h1>
+    <%= @book.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <h1>本の新規投稿</h1>
 
-<%= form_with model:@book, url: '/books', method: :post do |f| %>
-<div style="display:inline-block;">
-<h4>本の名前</h4>
-<%= f.text_field:title,class: "w-100"%>
+  <%= form_with model:@book, url: '/books', method: :post do |f| %>
+  <div style="display:inline-block;">
+  <h4>本の名前</h4>
+  <%= f.text_field:title,class: "w-100"%>
 
-<h4>本の画像</h4>
-<%= f.file_field :image, accept: "image/*"%>
+  <h4>本の画像</h4>
+  <%= f.file_field :image, accept: "image/*"%>
 
-<h4>本の著者</h4>
-<%= f.text_field:author,class: "w-100"%>
+  <h4>本の著者</h4>
+  <%= f.text_field:author,class: "w-100"%>
 
-<div class="check_box w-100">
+  <div class="check_box w-100">
     <span>タグ</span>
-    <div class ="row">
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-     <div class="col-sm-4">
-       <%= tag.label do %>
-         <%= tag.check_box %>
-         <%= tag.text %>
-       <% end %>
-     </div>
-   <% end %>
-   </div>
- </div>
-
-<h4>本の詳細</h4>
-
-<%= f.text_area :introduction,class: "text_area"%>
-
-<div class="form-group w-100">
-  <div class="row">
-    <%=f.label:"公開範囲",class:"col-sm-4"%>
-    <div style="padding-right:20px;">
-    <%= f.radio_button :is_draft, :false %>
-    <%= f.label :is_draft, "公開", {value: :false, style: "display: inline-block;"} %></div>
-    <div style="padding-right:20px;">
-    <%= f.radio_button :is_draft, :true, checked: true%>
-    <%= f.label :is_draft, "下書き保存", {value: :true, style: "display: inline-block;"} %></div>
+      <div class ="row">
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <div class="col-sm-4">
+            <%= tag.label do %>
+              <%= tag.check_box %>
+              <%= tag.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
   </div>
-</div>
 
-<%= f.submit '投稿', class: "w-100 btn btn-primary" %>
-</div>
-<% end %>
+  <h4>本の詳細</h4>
+  <%= f.text_area :introduction,class: "text_area"%>
+
+  <div class="form-group w-100">
+    <div class="row">
+      <%=f.label:"公開範囲",class:"col-sm-4"%>
+        <div style="padding-right:20px;">
+        <%= f.radio_button :is_draft, :false %>
+        <%= f.label :is_draft, "公開", {value: :false, style: "display: inline-block;"} %></div>
+        <div style="padding-right:20px;">
+        <%= f.radio_button :is_draft, :true, checked: true%>
+        <%= f.label :is_draft, "下書き保存", {value: :true, style: "display: inline-block;"} %></div>
+    </div>
+  </div>
+  <%= f.submit '投稿', class: "w-100 btn btn-primary" %>
+  </div>
+  <% end %>
 </div>

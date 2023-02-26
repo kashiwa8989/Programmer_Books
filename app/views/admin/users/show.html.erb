@@ -13,9 +13,9 @@
 	        <td>プロフィール画像</td>
 	        <td>
 	          <% if @user.image.attached? %>
-            <%= image_tag @user.image, size: "50x50" %>
+              <%= image_tag @user.image, size: "50x50" %>
             <% else %>
-            <%= image_tag 'no_image', size: "50x50" %>
+              <%= image_tag 'no_image', size: "50x50" %>
             <% end %>
 	        </td>
 	      </tr>
@@ -42,20 +42,22 @@
 		    	<td><%= @user.gender_id %></td>
 	      </tr>
 
-
         <tr class="brown-border">
           <td>会員ステータス</td>
-	       <th><% if @user.is_deleted == false %>
-          <p style="color: red;">有効</p>
-          <% else %>
-          <p style="color: black">退会</p>
-          <% end %>
-         </th>
+		       <th>
+		         <% if @user.is_deleted == false %>
+	             <p style="color: red;">有効</p>
+	           <% else %>
+	             <p style="color: black">退会</p>
+	           <% end %>
+	         </th>
         </tr>
 
         <tr class="brown-border">
           <td>
-		    <%= link_to "会員ステータス変更", edit_admin_user_path(@user), class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
+		        <%= link_to "会員ステータス変更", edit_admin_user_path(@user), class: "btn btn-outline-danger mx-auto my-1" %>&emsp;
 		      </td>
 		    </tr>
 	    </table>
+	  </div>
+	</div>

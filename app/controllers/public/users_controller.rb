@@ -53,9 +53,9 @@ class Public::UsersController < ApplicationController
   end
 
   def guest_user_check
+    redirect_to root_path, notice: "許可されていない操作です" if current_user.email == "example@guest.com"
     # if current_user.email == "aaa@aaa.com"
       # flash[:notice] ="許可されていない操作です"
-      redirect_to root_path, notice: "許可されていない操作です" if current_user.email == "example@guest.com"
     # end
   end
 end

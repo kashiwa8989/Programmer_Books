@@ -11,8 +11,6 @@ class Book < ApplicationRecord
   validates :tags, presence: true
   validates :is_draft, inclusion: {in: [true, false]}
 
-
-
   def self.search(keyword)
   where(["title like? OR author like?", "%#{keyword}%", "%#{keyword}%"])
   end

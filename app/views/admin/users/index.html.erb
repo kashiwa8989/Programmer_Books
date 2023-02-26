@@ -1,31 +1,31 @@
 <div class="container  px-8 px-sm-8">
-<p><span class="bg-lightsecondary">会員一覧</span>
- <table class="table ">
-  <thead>
-   <tr>
-    <th>会員ID</th>
-    <th>ニックネーム</th>
-    <th>メールアドレス</th>
-    <th>ステータス</th>
-   </tr>
-  </thead>
+  <p><span class="bg-lightsecondary">会員一覧</span>
+  <table class="table ">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>ニックネーム</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
 
-  <tbody>
-  <% @users.each do |user| %>
-   <tr>
-    <th><%= user.id %></th>
-    <th><%= link_to user.name, admin_user_path(user.id) %></th>
-    <th><%= user.email %></th>
-    <th><% if user.is_deleted == false %>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <th><%= user.id %></th>
+        <th><%= link_to user.name, admin_user_path(user.id) %></th>
+        <th><%= user.email %></th>
+        <th><% if user.is_deleted == false %>
         <p style="color: red;">有効</p>
         <% else %>
         <p style="color: black">退会</p>
         <% end %>
-    </th>
-   </tr>
-  <% end %>
-  </tbody>
- </table>
-<%#= paginate  @customers %>
+        </th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= paginate  @users %>
 </div>
 

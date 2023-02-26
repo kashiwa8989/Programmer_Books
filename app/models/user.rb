@@ -21,6 +21,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
 
+  # ユーザー情報の性別をenumで分ける
   enum gender_id: { "男性": 0, "女性": 1}
 
   # フォローしたときの処理
@@ -36,6 +37,7 @@ class User < ApplicationRecord
    followings.include?(user)
   end
 
+  # ゲストログインの情報を決める
   def self.guest
     find_or_create_by!(email: 'example@guest.com') do |user|
       user.password = SecureRandom.urlsafe_base64
