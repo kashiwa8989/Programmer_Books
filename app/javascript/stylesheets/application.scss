@@ -101,7 +101,18 @@ height: 10em;
   // object-fit: contain　画像全部含めて表示
 }
 
-.white{
-  text-decoration: none;
-  color: white ;
+h1,h2 {
+	line-height:0.95em;
+	font-weight:bold;
+	color: #000;
+	text-shadow:
+		0 0 0.05em #FFF59D,
+		0 0 0.06em #FFF59D,
+		0 0 0.07em #FFF59D,
+		0 0 0.08em #FFF59D,
+		0 0 0.09em #FFF59D,
+		0 0 0.20em #FFF59D,
+		0 0 0.20em #FFF59D,
+		0 0 0.20em #FFF59D,
+		0 0 0.50em #FFF59D;
 }
