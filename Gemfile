@@ -60,9 +60,12 @@ group :production do
   gem 'mysql2'
 end
 
+#会員登録および管理者機能
 gem 'devise'
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+#ページネーション
 gem 'kaminari','~> 1.2.1'
+#バリデーションのエラー文を日本語化
 gem 'rails-i18n'

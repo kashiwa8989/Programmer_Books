@@ -5,7 +5,7 @@
 
 
 import Rails from "@rails/ujs"
-// import Turbolinks from "turbolinks"
+import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
@@ -15,8 +15,7 @@ import "bootstrap";
 import "../stylesheets/application"
 const images = require.context('../images/', true)
 import '@fortawesome/fontawesome-free/js/all'
-window.$ = window.jQuery = require('jquery');
-
+// 星評価機能のjqueryライブラリの導入
 import Raty from "packs/raty.js"
 window.raty = function(elem,opt){
     var raty =  new Raty(elem,opt)
@@ -25,6 +24,6 @@ window.raty = function(elem,opt){
 }
 
 Rails.start()
-// Turbolinks.start()
+Turbolinks.start()
 ActiveStorage.start()
 

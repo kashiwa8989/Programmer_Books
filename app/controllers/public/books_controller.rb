@@ -6,7 +6,6 @@ class Public::BooksController < ApplicationController
   end
 
   def index
-    @book = Book.new
     @users = User.all
     @book_comments = BookComment.all
 
