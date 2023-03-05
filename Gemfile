@@ -60,7 +60,7 @@ group :production do
   gem 'mysql2'
 end
 
-#会員登録および管理者機能
+#会員機能および管理者機能
 gem 'devise'
 gem "net-smtp"
 gem "net-pop"

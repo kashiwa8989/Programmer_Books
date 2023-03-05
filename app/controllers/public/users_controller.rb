@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
-  before_action :guest_user_check, only: [:edit, :update, :withdraw]
+  before_action :guest_user_check, only: [:edit, :update, :withdraw,:confirm,:unsubscribe]
+  before_action :ensure_correct_user,only: [:edit,:update,:withdraw,:confirm,:unsubscribe]
 
   def index
     @users = User.all.page(params[:page]).per(10)
@@ -45,7 +46,7 @@ class Public::UsersController < ApplicationController
   	  params.require(:user).permit(:is_deleted, :name, :email, :password, :gender_id, :birthday, :image)
   end
 
-  def ensure_correct_customer
+  def ensure_correct_user
     @user = User.find(params[:id])
     if current_user.id != @user.id
       redirect_to root_path

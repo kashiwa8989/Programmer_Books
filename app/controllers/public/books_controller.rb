@@ -1,5 +1,6 @@
 class Public::BooksController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_book,only: [:edit,:update,:destroy]
 
   def new
     @book = Book.new
@@ -57,6 +58,13 @@ class Public::BooksController < ApplicationController
   @books = Book.search(params[:keyword]).page(params[:page]).per(9)
   @keyword = params[:keyword]
   render "index"
+  end
+
+  def correct_book
+        @book = Book.find(params[:id])
+    unless @book.user.id == current_user.id
+      redirect_to root_path
+    end
   end
 
   private
