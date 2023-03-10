@@ -33,6 +33,7 @@
             <td></td>
             <td>
               <%= f.submit "ログイン", class: "btn btn-outline-danger" %>
+              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-danger" %>
             </td>
           </tr>
         </tbody>
