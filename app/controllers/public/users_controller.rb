@@ -1,9 +1,9 @@
 class Public::UsersController < ApplicationController
   before_action :guest_user_check, only: [:edit, :update, :withdraw,:confirm,:unsubscribe]
-  before_action :ensure_correct_user,only: [:edit,:update,:withdraw,:confirm,:unsubscribe]
+  before_action :ensure_correct_user,only: [:index,:show,:edit,:update,:withdraw,:confirm,:unsubscribe]
 
   def index
-    @users = User.all.page(params[:page]).per(10)
+    @users = User.all.where(is_deleted: false).page(params[:page]).per(10)
   end
 
   def show
