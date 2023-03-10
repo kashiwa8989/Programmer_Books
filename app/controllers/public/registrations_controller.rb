@@ -81,9 +81,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
     user_path(resource)
   end
 
-  protected
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :gender_id, :birthday])
-  end
+  # protected
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :gender_id, :birthday])
+  # end
 
 end
